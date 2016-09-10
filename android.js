@@ -17,7 +17,7 @@ var message = new gcm.Message({
 // read from file(line by line)
 var curline = 0;
 var LineByLineReader = require('line-by-line'),
-    lr = new LineByLineReader('pushdata.txt');
+    lr = new LineByLineReader('D:/pushdata.txt');
 
 lr.on('error', function (err) {
 	// 'err' contains error object
