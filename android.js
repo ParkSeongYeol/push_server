@@ -14,6 +14,25 @@ var message = new gcm.Message({
     }
 });
 
+// read from file(line by line)
+var curline = 0;
+var LineByLineReader = require('line-by-line'),
+    lr = new LineByLineReader('pushdata.txt');
+
+lr.on('error', function (err) {
+	// 'err' contains error object
+});
+
+lr.on('line', function (line) {
+	// 'line' contains the current line without the trailing newline character.
+	console.log(curline + ' ' + line);
+	curline = curline + 1;
+});
+
+lr.on('end', function () {
+	// All lines are read, file is closed now.
+});
+
 var server_access_key = 'XXXXX';
 var sender = new gcm.Sender(server_access_key);
 var registrationIds = [];
